@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Event Calendar | Argent Citadel of Halazar</title>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<a class="brand" href="index.html">ARGENT CITADEL OF HALAZAR</a>
+<nav class="site-nav" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="gallery.html">Photo Gallery</a></li><li><a href="event-calendar.html" aria-current="page">Event Calendar</a></li><li><a href="activities.html">Activities</a></li><li><a href="branches.html">Branches</a></li><li><a href="contact-us.html">Contact Us</a></li><li><a href="blog.html">Blog</a></li></ul></nav>
+</header>
+<main id="main">
+<section class="page">
+<p>View the Calendar below for Argent Citadel of Halazar events and Halazar adjacent events.</p>
+<div class="calendar" id="calendar">
+<div class="calendar-head">
+<h2 aria-live="polite"></h2>
+<button type="button" data-today>Today</button>
+<button type="button" data-prev aria-label="Previous month">‹</button>
+<button type="button" data-next aria-label="Next month">›</button>
+</div>
+<div class="calendar-grid"></div>
+</div>
+<p id="calendar-status" role="alert" hidden>Events couldn't be loaded. Please try again later.</p>
+<dialog id="event-dialog" class="event-dialog" aria-labelledby="event-title">
+<h2 id="event-title"></h2>
+<p id="event-when"></p>
+<p id="event-location"></p>
+<p id="event-description"></p>
+<p><a id="event-link" rel="noopener">More information</a></p>
+<button type="button" data-close>Close</button>
+</dialog>
+</section>
+</main>
+<footer class="site-footer">
+<a href="https://www.facebook.com/groups/984087021313517">Facebook</a>
+<div>©2026 by the Argent Citadel of Halazar.</div>
+</footer>
+<script src="js/calendar.js"></script>
+</body>
+</html>

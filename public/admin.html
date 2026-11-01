@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Calendar Admin | Argent Citadel of Halazar</title>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html">ARGENT CITADEL OF HALAZAR</a>
+<nav class="site-nav" aria-label="Site"><ul><li><a href="event-calendar.html">View Calendar</a></li></ul></nav>
+</header>
+<main id="main" class="admin">
+<section id="login" hidden>
+<h1>Calendar Admin</h1>
+<form id="login-form" class="admin-form">
+<label>Password <input type="password" name="password" autocomplete="current-password" required></label>
+<button type="submit">Log in</button>
+<p id="login-message" role="alert"></p>
+</form>
+</section>
+<section id="app" hidden>
+<div class="admin-top">
+<h1>Calendar Admin</h1>
+<button type="button" id="logout">Log out</button>
+</div>
+<h2 id="form-heading">Add an event</h2>
+<form id="event-form" class="admin-form">
+<label>Title <input name="title" maxlength="120" required></label>
+<div class="admin-row">
+<label>Date <input type="date" name="date" required></label>
+<label>End date (multi-day events) <input type="date" name="end"></label>
+</div>
+<label class="admin-check"><input type="checkbox" name="weekly"> Repeats every week</label>
+<label>Repeat until (blank means no end) <input type="date" name="until"></label>
+<label>Time <input name="time" maxlength="60" placeholder="1:30-4:30"></label>
+<label>Location <input name="location" maxlength="200"></label>
+<label class="admin-check"><input type="checkbox" name="skipNext"> Leave out of the Next Event link (for practices)</label>
+<label>Description <textarea name="description" rows="4" maxlength="2000"></textarea></label>
+<label>Link <input type="url" name="url" maxlength="500" placeholder="https://"></label>
+<div class="admin-actions">
+<button type="submit">Save event</button>
+<button type="button" id="cancel-edit" hidden>Cancel</button>
+</div>
+<p id="form-message" role="status"></p>
+</form>
+<h2>Events</h2>
+<ul id="event-list" class="admin-list"></ul>
+</section>
+</main>
+<script src="js/admin.js"></script>
+</body>
+</html>
