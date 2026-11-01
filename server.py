@@ -268,8 +268,11 @@ def main():
     port = int(os.environ.get("PORT", "8123"))
     if not PASSWORD:
         print("CALENDAR_PASSWORD is not set, so admin login is disabled.", flush=True)
+    # On Windows, address reuse lets a second server silently share the port.
+    ThreadingHTTPServer.allow_reuse_address = os.name != "nt"
+    server = ThreadingHTTPServer((host, port), Handler)
     print(f"Serving on http://{host}:{port}", flush=True)
-    ThreadingHTTPServer((host, port), Handler).serve_forever()
+    server.serve_forever()
 
 
 if __name__ == "__main__":
