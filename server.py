@@ -156,7 +156,7 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = self.api_path()
-        if path == "/api/events":
+        if path in ("/api/events", "/data/events.json"):
             with lock:
                 self.send_json(200, load_events())
         elif path == "/api/session":

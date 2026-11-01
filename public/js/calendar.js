@@ -125,7 +125,7 @@
   dialog.querySelector("[data-close]").addEventListener("click", () => dialog.close());
 
   render();
-  fetch("/api/events")
+  fetch("data/events.json", { cache: "no-cache" })
     .then((r) => {
       if (!r.ok) throw new Error();
       return r.json();

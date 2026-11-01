@@ -26,16 +26,35 @@ Without `CALENDAR_PASSWORD`, the site and public calendar still work, and admin 
 | `PORT` | `8123` | Port |
 | `CALENDAR_DATA` | `data/events.json` | Events file |
 
-## Deploying
+## Publishing with GitHub Pages
 
-Run `server.py` as a service behind a reverse proxy that handles HTTPS, and keep it
-bound to `127.0.0.1`. The admin password and session cookie must travel over HTTPS.
-The proxy must send `X-Forwarded-Proto: https` so the cookie is marked Secure.
+Pushing to `main` runs `.github/workflows/pages.yml`, which publishes `public/` and
+`data/events.json`, leaving out the admin page. Pages must be set to deploy from GitHub
+Actions under **Settings → Pages**.
+
+GitHub Pages can't run `server.py`, so manage events locally:
+
+1. Start the server and add events at `/admin.html`.
+2. Commit and push `data/events.json`:
+
+```powershell
+git add data/events.json
+git commit -m "Update events"
+git push
+```
+
+## Hosting with Python instead
+
+To edit events online, run `server.py` as a service behind a reverse proxy that handles
+HTTPS, and keep it bound to `127.0.0.1`. The admin password and session cookie must
+travel over HTTPS. The proxy must send `X-Forwarded-Proto: https` so the cookie is
+marked Secure.
 
 Keep one server process running: sessions are held in memory, so a restart logs you
 out, and the events file is only locked within a single process.
 
-Back up `data/events.json`. It is the only copy of your events.
+Back up `data/events.json`, and store it outside the deploy path with `CALENDAR_DATA`
+so a redeploy can't overwrite it.
 
 ## API
 
